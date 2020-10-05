@@ -40,6 +40,15 @@ const App = () => {
     }))
   };
 
+  const addComment = (newPost) => {
+    setPosts(posts.map(post => {
+      if (post.id === newPost.id) {
+        return newPost
+      }
+      return post
+    }))
+  }
+
   const handleSearch = (text) => {
     const newPosts = posts.filter(post => {
       if (post.username === text) {
@@ -54,7 +63,7 @@ const App = () => {
       {/* Add SearchBar and Posts here to render them */}
       {/* Check the implementation of each component, to see what props they require, if any! */}
       <SearchBar handleSearch={ handleSearch } />
-      <Posts likePost={ likePost } posts={ posts } />
+      <Posts likePost={ likePost } posts={ posts } addComment={ addComment } />
     </div>
   );
 };
