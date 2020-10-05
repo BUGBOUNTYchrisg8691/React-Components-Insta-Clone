@@ -15,7 +15,7 @@ const SearchBar = (props) => {
         <FontAwesomeIcon icon={faInstagram} />
       </div>
       <form className="search-form">
-        <input type="text" placeholder="Search" ref={ searchRef } onSearch={ handleSearch(searchRef.current.value) } />
+        <input type="text" placeholder="Search" />
       </form>
       <div className="social-wrapper">
         <div className="social">
