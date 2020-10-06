@@ -14,7 +14,6 @@ const Post = props => {
     if (text === '') return
     const newPost = { ...post, comments: [...post.comments, { id: uuidv4(), username: "test", text: text }] }
     addComment(newPost)
-    console.log(newPost)
     commentRef.current.value = ""
   }
 

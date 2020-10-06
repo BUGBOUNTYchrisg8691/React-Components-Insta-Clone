@@ -49,20 +49,40 @@ const App = () => {
     }))
   }
 
-  const handleSearch = (text) => {
-    const newPosts = posts.filter(post => {
-      if (post.username === text) {
-        return post
-      }
+  const handleSearch = e => {
+    const oldPosts = posts.map(post => {
+      return { ...post, username: post.username.toLowerCase() }
     })
-    setPosts(newPosts)
+
+    if (e !== '') {
+      let newPosts = [] 
+      setSearch(e) 
+      newPosts = oldPosts.filter(post => {
+        return post.username.includes(search.toLowerCase())
+      })
+      setPosts(newPosts)
+    } else {
+      setPosts(posts)
+    }
   }
+
+  // const filterSearch = (text) => {
+  //   const newPosts = [...posts]
+  //   setPosts(posts.map(post => {
+  //     if (post.username === text) {
+  //       return post
+  //     }
+  //   }))
+  //   if (posts.length === 0) {
+  //     setPosts(newPosts)
+  //   }
+  // }
 
   return (
     <div className='App'>
       {/* Add SearchBar and Posts here to render them */}
       {/* Check the implementation of each component, to see what props they require, if any! */}
-      <SearchBar handleSearch={ handleSearch } />
+      <SearchBar handleSearch={ handleSearch } posts={ posts } />
       <Posts likePost={ likePost } posts={ posts } addComment={ addComment } />
     </div>
   );
