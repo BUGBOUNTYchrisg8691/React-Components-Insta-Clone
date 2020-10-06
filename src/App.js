@@ -62,7 +62,7 @@ const App = () => {
       })
       setPosts(newPosts)
     } else {
-      setPosts(posts)
+      setPosts(oldPosts)
     }
   }
 
@@ -70,7 +70,7 @@ const App = () => {
     <div className='App'>
       {/* Add SearchBar and Posts here to render them */}
       {/* Check the implementation of each component, to see what props they require, if any! */}
-      <SearchBar handleSearch={ handleSearch } posts={ posts } />
+      <SearchBar handleSearch={ handleSearch } />
       <Posts likePost={ likePost } posts={ posts } addComment={ addComment } />
     </div>
   );
